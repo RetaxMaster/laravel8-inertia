@@ -48,9 +48,10 @@ class NoteController extends Controller
      * @param  \App\Models\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function show(Note $note)
-    {
-        //
+    public function show(Note $note) {
+
+        return Inertia::render("Notes/Show", compact("note"));
+        
     }
 
     /**
