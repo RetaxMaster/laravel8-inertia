@@ -60,9 +60,10 @@ class NoteController extends Controller
      * @param  \App\Models\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function edit(Note $note)
-    {
-        //
+    public function edit(Note $note) {
+
+        return Inertia::render("Notes/Edit", compact("note"));
+        
     }
 
     /**
