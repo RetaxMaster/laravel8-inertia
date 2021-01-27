@@ -4546,6 +4546,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -4555,6 +4563,19 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     notes: Array
+  },
+  data: function data() {
+    return {
+      q: ""
+    };
+  },
+  watch: {
+    // No podemos usar replace porque sino al especribir algo el sistema hará inmediatamente la búsqueda en lugar de esperarse a que termine
+    q: function q(value) {
+      this.$inertia.replace(this.route("notes.index", {
+        q: value
+      }));
+    }
   }
 });
 
@@ -33829,80 +33850,102 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "md:col-span-2 mt-5 md:mt-0" }, [
-              _c(
-                "div",
-                { staticClass: "shadow bg-white md:rounded-md p-4" },
-                [
-                  _c(
-                    "inertia-link",
-                    {
-                      staticClass:
-                        "bg-blue-500 text-white font-bold py-2 px-4 rounded-md",
-                      attrs: { href: _vm.route("notes.create") }
-                    },
-                    [_vm._v("Crear")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "table",
-                    _vm._l(_vm.notes, function(note) {
-                      return _c("tr", { key: note.id }, [
-                        _c("td", { staticClass: "border px-4 py-2" }, [
-                          _vm._v(
-                            "\n                                    " +
-                              _vm._s(note.excerpt) +
-                              "\n                                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "td",
-                          { staticClass: "px-4 py-2" },
-                          [
-                            _c(
-                              "inertia-link",
-                              {
-                                attrs: {
-                                  href: _vm.route("notes.show", note.id)
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                        Ver\n                                    "
-                                )
-                              ]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "td",
-                          { staticClass: "px-4 py-2" },
-                          [
-                            _c(
-                              "inertia-link",
-                              {
-                                attrs: {
-                                  href: _vm.route("notes.edit", note.id)
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                        Editar\n                                    "
-                                )
-                              ]
-                            )
-                          ],
-                          1
-                        )
-                      ])
+              _c("div", { staticClass: "shadow bg-white md:rounded-md p-4" }, [
+                _c(
+                  "div",
+                  { staticClass: "flex justify-between" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.q,
+                          expression: "q"
+                        }
+                      ],
+                      staticClass: "form-input rounded-md shadow-sm",
+                      attrs: { type: "text", placeholder: "Buscar..." },
+                      domProps: { value: _vm.q },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.q = $event.target.value
+                        }
+                      }
                     }),
-                    0
-                  )
-                ],
-                1
-              )
+                    _vm._v(" "),
+                    _c(
+                      "inertia-link",
+                      {
+                        staticClass:
+                          "bg-blue-500 text-white font-bold py-2 px-4 rounded-md",
+                        attrs: { href: _vm.route("notes.create") }
+                      },
+                      [_vm._v("Crear")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("hr", { staticClass: "my-6" }),
+                _vm._v(" "),
+                _c(
+                  "table",
+                  _vm._l(_vm.notes, function(note) {
+                    return _c("tr", { key: note.id }, [
+                      _c("td", { staticClass: "border px-4 py-2" }, [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(note.excerpt) +
+                            "\n                                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { staticClass: "px-4 py-2" },
+                        [
+                          _c(
+                            "inertia-link",
+                            {
+                              attrs: { href: _vm.route("notes.show", note.id) }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                        Ver\n                                    "
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { staticClass: "px-4 py-2" },
+                        [
+                          _c(
+                            "inertia-link",
+                            {
+                              attrs: { href: _vm.route("notes.edit", note.id) }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                        Editar\n                                    "
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ])
+                  }),
+                  0
+                )
+              ])
             ])
           ])
         ])
