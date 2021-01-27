@@ -4434,6 +4434,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -4455,6 +4459,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     submit: function submit() {
       this.$inertia.put(this.route("notes.update", this.note.id), this.form);
+    },
+    destroy: function destroy() {
+      if (confirm("¿Desea eliminar?")) this.$inertia["delete"](this.route("notes.destroy", this.note.id));
     }
   }
 });
@@ -33709,6 +33716,22 @@ var render = function() {
                       [_vm._v("Editar")]
                     )
                   ]
+                ),
+                _vm._v(" "),
+                _c("hr", { staticClass: "my-6" }),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.destroy($event)
+                      }
+                    }
+                  },
+                  [_vm._v("Eliminar nota")]
                 )
               ])
             ])

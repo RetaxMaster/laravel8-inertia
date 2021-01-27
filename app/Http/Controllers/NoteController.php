@@ -100,8 +100,11 @@ class NoteController extends Controller
      * @param  \App\Models\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Note $note)
-    {
-        //
+    public function destroy(Note $note) {
+
+        $note->delete();
+
+        return redirect()->route("notes.index");
+        
     }
 }
