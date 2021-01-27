@@ -28,7 +28,7 @@ class NoteController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render("Notes/Create");
     }
 
     /**
@@ -73,9 +73,17 @@ class NoteController extends Controller
      * @param  \App\Models\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Note $note)
-    {
-        //
+    public function update(Request $request, Note $note) {
+        
+        $request->validate([
+            "excerpt" => "required",
+            "content" => "required",
+        ]);
+
+        $note->update($request->all());
+
+        return redirect()->route("notes.index");
+
     }
 
     /**

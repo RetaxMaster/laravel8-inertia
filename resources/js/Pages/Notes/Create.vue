@@ -13,8 +13,8 @@
                     
                     <div class="md:col-span-1">
                         <div class="px-4 sm:px0">
-                            <h3 class="text-lg text-gray-900">Editar una nota</h3>
-                            <p class="text-sm text-gray-600">Si editas no podrás volver al estado anterior</p>
+                            <h3 class="text-lg text-gray-900">Crear una nota</h3>
+                            <p class="text-sm text-gray-600">Luego de crear la pdorás editar</p>
                         </div>
                     </div>
 
@@ -40,7 +40,7 @@
 
                                 <button 
                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
-                                >Editar</button>
+                                >Crear</button>
 
                             </form>
 
@@ -65,15 +65,11 @@
             Welcome,
         },
 
-        props: {
-            note: Object
-        },
-
         data() {
             return {
                 form: {
-                    excerpt: this.note.excerpt,
-                    content: this.note.content,
+                    excerpt: "",
+                    content: "",
                 }
             }
         },
