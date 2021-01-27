@@ -3200,6 +3200,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -31670,7 +31676,24 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _c("main", [_vm._t("default")], 2),
+          _c(
+            "main",
+            [
+              _vm.$page.props.flash.status
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-blue-500 text-white text-sm font-bold p-4"
+                    },
+                    [_c("p", [_vm._v(_vm._s(_vm.$page.props.flash.status))])]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm._t("default")
+            ],
+            2
+          ),
           _vm._v(" "),
           _c("portal-target", { attrs: { name: "modal", multiple: "" } })
         ],
